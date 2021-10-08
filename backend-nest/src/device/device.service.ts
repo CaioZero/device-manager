@@ -1,19 +1,18 @@
-import {Injectable, NotFoundException} from '@nestjs/common';
-import {CreateDeviceDto} from './dto/create-device.dto';
-import {Repository} from 'typeorm';
-import {InjectRepository} from '@nestjs/typeorm';
-import {Device} from './entities/device.entity';
-import {Category} from '../category/entities/category.entity';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateDeviceDto } from './dto/create-device.dto';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Device } from './entities/device.entity';
+import { Category } from '../category/entities/category.entity';
 
 @Injectable()
 export class DeviceService {
   constructor(
-      @InjectRepository(Device)
-      private readonly repository: Repository<Device>,
-  ) {
-  }
+    @InjectRepository(Device)
+    private repository: Repository<Device>,
+  ) {}
 
-  findAll() {
+  findAll(): Promise<Device[]> {
     return this.repository.find();
   }
 
@@ -32,13 +31,16 @@ export class DeviceService {
       return this.repository.save(newDevice);
     } else {
       throw new NotFoundException(
-          `Category with ID=${createDeviceDto.category.id} not found`,
+        `Category with ID=${createDeviceDto.category.id} not found`,
       );
     }
   }
 
-  async remove(id: number) {
-    const device = await this.findOne(id);
-    return this.repository.remove(device);
+  remove(id: number) {
+    return this.findOne(id)
+      .then((device) => this.repository.remove(device))
+      .catch(() => {
+        throw new NotFoundException(`Device with ID=${id} not found`);
+      });
   }
 }

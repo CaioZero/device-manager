@@ -1,11 +1,10 @@
-import {Body, Controller, Delete, Get, Param, Post} from '@nestjs/common';
-import {DeviceService} from './device.service';
-import {CreateDeviceDto} from './dto/create-device.dto';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { DeviceService } from './device.service';
+import { CreateDeviceDto } from './dto/create-device.dto';
 
 @Controller('device')
 export class DeviceController {
-  constructor(private readonly deviceService: DeviceService) {
-  }
+  constructor(private readonly deviceService: DeviceService) {}
 
   @Get()
   findAll() {
