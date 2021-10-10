@@ -7,15 +7,18 @@ import {HomeComponent} from "./views/home/home.component";
 const routes: Routes = [
   {
     path: 'devices',
-    component: DeviceManagerComponent
+    component: DeviceManagerComponent,
+    data : {actions : true}
   },
   {
     path: 'categories',
-    component: CategoryManagerComponent
+    component: CategoryManagerComponent,
+    data : {actions : true}
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    data : {actions : false}
   },
   {
     path: '**',

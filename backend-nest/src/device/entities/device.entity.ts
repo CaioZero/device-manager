@@ -21,6 +21,9 @@ export class Device extends BaseEntity {
   @Column({ name: 'part_number', type: 'int', nullable: false })
   partNumber: number;
 
-  @ManyToOne(() => Category, () => Category, { eager: true })
+  @ManyToOne(() => Category, () => Category, {
+    eager: true,
+    onDelete: 'CASCADE',
+  })
   category: Category;
 }

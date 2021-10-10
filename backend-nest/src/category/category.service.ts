@@ -28,9 +28,13 @@ export class CategoryService {
     return this.repository.save(newCategory);
   }
 
-  remove(id: number) {
+  async remove(id: number) {
+    const device = await Category.findOne();
+    console.log(device);
     return this.findOne(id)
-      .then((category) => this.repository.remove(category))
+      .then((category) => {
+        this.repository.remove(category);
+      })
       .catch(() => {
         throw new NotFoundException(`Category with ID=${id} not found`);
       });

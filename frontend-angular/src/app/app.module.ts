@@ -3,10 +3,10 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import { DeviceManagerComponent } from './views/device-manager/device-manager.component';
-import { CategoryManagerComponent } from './views/category-manager/category-manager.component';
-import { HomeComponent } from './views/home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DeviceManagerComponent} from './views/device-manager/device-manager.component';
+import {CategoryManagerComponent} from './views/category-manager/category-manager.component';
+import {HomeComponent} from './views/home/home.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -17,10 +17,13 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatIconModule} from "@angular/material/icon";
-import { AddCategoryComponent } from './views/category-manager/add-category/add-category.component';
-import { RemoveCategoryComponent } from './views/category-manager/remove-category/remove-category.component';
-import { CreateDeviceComponent } from './views/device-manager/create-device/create-device.component';
-import { RemoveDeviceComponent } from './views/device-manager/remove-device/remove-device.component';
+import {AddCategoryComponent} from './views/category-manager/add-category/add-category.component';
+import {RemoveCategoryComponent} from './views/category-manager/remove-category/remove-category.component';
+import {AddDeviceComponent} from './views/device-manager/add-device/add-device.component';
+import {RemoveDeviceComponent} from './views/device-manager/remove-device/remove-device.component';
+import {MatSelectModule} from "@angular/material/select";
+import {ToastrModule} from "ngx-toastr";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -30,7 +33,7 @@ import { RemoveDeviceComponent } from './views/device-manager/remove-device/remo
     HomeComponent,
     AddCategoryComponent,
     RemoveCategoryComponent,
-    CreateDeviceComponent,
+    AddDeviceComponent,
     RemoveDeviceComponent
   ],
   imports: [
@@ -47,7 +50,10 @@ import { RemoveDeviceComponent } from './views/device-manager/remove-device/remo
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    ToastrModule.forRoot(),
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
