@@ -16,10 +16,12 @@ import { DeviceModule } from './device/device.module';
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'mysql',
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        database: 'device_manager',
+        url: process.env.DATABASE_URL || null,
+        host: process.env.LOCALHOST || 'localhost',
+        port: parseInt(process.env.PORT) || 3306,
+        username: process.env.USER || 'root',
+        password: process.env.PASSWORD || '',
+        database: process.env.DATABASE || 'db_device',
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true,
       }),

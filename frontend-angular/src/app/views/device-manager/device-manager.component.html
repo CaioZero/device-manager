@@ -1,0 +1,47 @@
+<button *ngIf="homeButton" mat-raised-button routerLink="/home" [state]="{actions:false}">Home</button>
+
+<div class="table mat-elevation-z8 ">
+  <mat-table [dataSource]="dataSource" matSort>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row ; columns: columnsToDisplay;"></mat-row>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell  *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="color">
+      <mat-header-cell  *matHeaderCellDef mat-sort-header>Color</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.color}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="partNumber">
+      <mat-header-cell  *matHeaderCellDef mat-sort-header>Part Number</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.partNumber}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.category.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container [matColumnDef]="'actions'">
+      <mat-header-cell *matHeaderCellDef ="let element;">
+        <button mat-icon-button color="primary" (click)="create(element)">
+          <mat-icon matTooltip="Add new Device">add</mat-icon>
+        </button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element;">
+        <button mat-icon-button color="warn" (click)="delete(element)" >
+          <mat-icon mat-icon-button matTooltip="Delete Device">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+  </mat-table>
+
+  <mat-paginator [pageSize]="4"
+                 [pageSizeOptions]="[4, 10, 20]"
+                 [length]="resultsLength" ></mat-paginator>
+
+</div>
