@@ -1,5 +1,4 @@
 import { IsAlpha, Min } from 'class-validator';
-import { Category } from 'src/category/entities/category.entity';
 import {
   BaseEntity,
   Column,
@@ -7,6 +6,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Category } from '../../category/entities/category.entity';
 
 @Entity()
 export class Device extends BaseEntity {

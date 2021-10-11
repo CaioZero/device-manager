@@ -29,5 +29,6 @@ import { DeviceModule } from './device/device.module';
   ],
   controllers: [AppController],
   providers: [AppService],
+  exports: [AppModule],
 })
 export class AppModule {}

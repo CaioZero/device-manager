@@ -29,8 +29,6 @@ export class CategoryService {
   }
 
   async remove(id: number) {
-    const device = await Category.findOne();
-    console.log(device);
     return this.findOne(id)
       .then((category) => {
         this.repository.remove(category);

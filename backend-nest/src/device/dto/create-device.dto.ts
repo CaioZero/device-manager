@@ -1,5 +1,5 @@
 import { IsAlpha, IsInt, IsNotEmpty, Length, Min } from 'class-validator';
-import { Category } from '../../category/entities/category.entity';
+import { CategoryDto } from '../../category/dto/category.dto';
 
 export class CreateDeviceDto {
   @IsAlpha()
@@ -13,5 +13,5 @@ export class CreateDeviceDto {
   partNumber: number;
 
   @IsNotEmpty()
-  category: Category;
+  category: CategoryDto;
 }
